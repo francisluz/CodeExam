@@ -1,3 +1,4 @@
+'use strict';
 const assert = require('assert');
 var flatArray = require('../shared/FlatArray.js');
 

@@ -1,8 +1,18 @@
-"use strict";
+'use strict';
 var database = require('../data/database.js');
 var GeoCode = require('../shared/GeoCode.js');
 const intercomOffice = {latitude:'53.3393',longitude:'-6.2576841'};
 const maxDistance = 100;
+
+function SortById (current, next){
+    if(current.user_id > next.user_id){
+        return 1;
+    } else if(current.user_id < next.user_id){
+        return -1;
+    } else {
+        return 0;
+    }
+}
 
 module.exports = {
     Nearest : function(){
@@ -15,16 +25,7 @@ module.exports = {
             }
         });
 
-        var sortedList =  arrCustomers.sort(function(current, next){
-                if(current.user_id > next.user_id){
-                    return 1;
-                } else if(current.user_id < next.user_id){
-                    return -1;
-                } else {
-                    return 0;
-                }
-
-            });
+        var sortedList = arrCustomers.sort(SortById);
 
         return sortedList;
     }

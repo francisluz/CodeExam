@@ -1,3 +1,4 @@
+'use strict';
 var customers = require('./customers.json');
 
 module.exports = {
